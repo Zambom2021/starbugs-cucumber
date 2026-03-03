@@ -25,3 +25,7 @@ end
 Então('deve ser informado o seguinte prazo de entrega: {string}') do |delivery_time|
   @order.assert_delivery_time(delivery_time)
 end
+
+Então('deve ser exibida mensagem: {string}') do |string|
+  @order.assert_invalid_data(string)
+end
