@@ -1,0 +1,46 @@
+name: Tests
+
+on:
+  push:
+    branches: [ develop, main ]
+  pull_request:
+    branches: [ develop, main ]
+
+  workflow_dispatch:
+    
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 💎 Configurar Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+          bundler-cache: true
+
+      - name: 📦 Instalar dependências
+        run: bundle install
+
+      - name: Criar pasta de logs
+        run: mkdir -p logs
+
+      # - name: 🧪 Executar testes Cucumber
+      #   run: |
+      #     mkdir -p logs
+      #     ./bin/cucumber -f progress -f html -o logs/report.html
+
+      - name: Executar testes
+        run: bundle exec cucumber
+        env:
+          CI: true
+
+      - name: 📊 Publicar relatório como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: logs/report.html
