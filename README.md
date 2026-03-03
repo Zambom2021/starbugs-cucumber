@@ -20,9 +20,9 @@ Repositório do projeto de testes automatizados do sistema Startbugs
 
 2. Executar testes de regressão
 ```bash
-    `bundle exec cucumber` 
+`bundle exec cucumber` ou `BROWSER=firefox bundle exec cucumber`
 ou 
-    `./bin/cucumber`
+ `./bin/cucumber` ou `BROWSER=firefox ./bin/cucumber`
 ```
 ### ❓ Por que existem dois comandos para executar o Cucumber?
 
