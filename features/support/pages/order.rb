@@ -13,4 +13,9 @@ class OrderPage
         delivery_time = find('p', text:'Previsão de entrega')
         expect(delivery_time.find('strong').text).to eql target
     end
+
+    def assert_invalid_data(target)
+        invalid_data = find('p', text:target)
+        expect(invalid_data.text).to eql target
+    end
 end
