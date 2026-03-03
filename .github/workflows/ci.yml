@@ -26,11 +26,14 @@ jobs:
       - name: 📦 Instalar dependências
         run: bundle install
 
+      - name: Criar pasta de logs
+        run: mkdir -p logs
+
       # - name: 🧪 Executar testes Cucumber
       #   run: |
       #     mkdir -p logs
       #     ./bin/cucumber -f progress -f html -o logs/report.html
-      
+
       - name: Executar testes
         run: bundle exec cucumber
         env:
